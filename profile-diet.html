@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaloriSense - Dietary Preferences</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 420px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h1 { color: #2193b0; margin-bottom: 20px; }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+      color: #333;
+    }
+    select, input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      padding: 10px 20px;
+      background: #2193b0;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background: #17627a; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dietary Preferences</h1>
+    <form id="dietForm">
+      <label for="dietChoice">Dietary Choice</label>
+      <select id="dietChoice" required>
+        <option value="">Select</option>
+        <option>Vegetarian</option>
+        <option>Vegan</option>
+        <option>Non-Vegetarian</option>
+        <option>Eggetarian</option>
+      </select>
+
+      <label for="allergies">Allergies (comma separated)</label>
+      <input type="text" id="allergies" placeholder="e.g. Peanuts, Gluten">
+
+      <label for="disliked">Disliked Foods (comma separated)</label>
+      <input type="text" id="disliked" placeholder="e.g. Broccoli, Milk">
+
+      <div class="buttons">
+        <button type="button" onclick="goBack()">← Back</button>
+        <button type="button" onclick="goNext()">Next →</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function goBack() { window.location.href = "profile-lifestyle.html"; }
+    function goNext() {
+      localStorage.setItem("dietChoice", document.getElementById("dietChoice").value);
+      localStorage.setItem("allergies", document.getElementById("allergies").value);
+      localStorage.setItem("disliked", document.getElementById("disliked").value);
+      window.location.href = "profile-medical.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaloriSense - Smart Diet Planner</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+
+      /* Background: Healthy food image */
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+    }
+
+    /* Blue overlay for theme */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(2, 119, 189, 0.75);
+      z-index: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      width: 280px;
+      text-align: center;
+      color: #333;
+    }
+
+    .login-box h2 {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      color: #0277bd;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #0277bd;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #01579b;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      display: none;
+      margin-bottom: 8px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .section h2 {
+      color: #ffeb3b;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .step {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: center;
+      color: #033b57;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+      color: #0277bd;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Logo & Login -->
+  <header>
+    <h1>CaloriSense</h1>
+    <div class="login-box">
+      <h2>Login</h2>
+      <div class="error" id="errorMsg">Please fill in all fields!</div>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- About Section -->
+    <div class="section">
+      <h2>About CaloriSense</h2>
+      <p>
+        CaloriSense is a smart diet planner that helps you know exactly **what to eat each day**.  
+        Based on your age, weight, and health goals, it provides **personalized daily meal plans**  
+        and keeps track of your eating habits.  
+        Stay consistent, monitor your progress, and achieve your fitness goals through healthy eating.
+      </p>
+    </div>
+
+    <!-- How It Works -->
+    <div class="section">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Step 1</h3>
+          <p>Create your profile with age, weight, and dietary goals.</p>
+        </div>
+        <div class="step">
+          <h3>Step 2</h3>
+          <p>Get a **daily diet plan** with breakfast, lunch, dinner & snacks.</p>
+        </div>
+        <div class="step">
+          <h3>Step 3</h3>
+          <p>Log what you eat daily and track calories/nutrition intake.</p>
+        </div>
+        <div class="step">
+          <h3>Step 4</h3>
+          <p>See progress reports and adjust plans as your health improves.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const errorMsg = document.getElementById("errorMsg");
+
+    loginForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (email === "" || password === "") {
+        errorMsg.style.display = "block";
+      } else {
+        errorMsg.style.display = "none";
+        alert("Login Successful! Redirecting...");
+        window.location.href = "dashboard.html"; 
+      }
+    });
+  </script>
+</body>
+</html>
+

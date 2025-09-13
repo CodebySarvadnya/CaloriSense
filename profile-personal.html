@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaloriSense - Personal Details</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 420px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h1 {
+      color: #2193b0;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+      color: #333;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .buttons {
+      margin-top: 20px;
+      text-align: right;
+    }
+    button {
+      padding: 10px 20px;
+      background: #2193b0;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background: #17627a; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Personal Details</h1>
+    <form id="personalForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" min="10" max="120" required>
+
+      <label for="sex">Sex</label>
+      <select id="sex" required>
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label for="weight">Current Weight (kg)</label>
+      <input type="number" id="weight" min="20" max="300" required>
+
+      <label for="height">Height (cm)</label>
+      <input type="number" id="height" min="50" max="250" required>
+
+      <div class="buttons">
+        <button type="button" onclick="goNext()">Next →</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function goNext() {
+      localStorage.setItem("name", document.getElementById("name").value);
+      localStorage.setItem("age", document.getElementById("age").value);
+      localStorage.setItem("sex", document.getElementById("sex").value);
+      localStorage.setItem("weight", document.getElementById("weight").value);
+      localStorage.setItem("height", document.getElementById("height").value);
+
+      window.location.href = "profile-lifestyle.html";
+    }
+  </script>
+</body>
+</html>

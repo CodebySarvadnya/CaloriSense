@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaloriSense - Lifestyle</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 420px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h1 { color: #2193b0; margin-bottom: 20px; }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+      color: #333;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      padding: 10px 20px;
+      background: #2193b0;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background: #17627a; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lifestyle</h1>
+    <form id="lifestyleForm">
+      <label for="activity">Activity Level</label>
+      <select id="activity" required>
+        <option value="">Select</option>
+        <option>Sedentary</option>
+        <option>Lightly Active</option>
+        <option>Moderately Active</option>
+        <option>Very Active</option>
+      </select>
+
+      <label for="occupation">Occupation Type</label>
+      <select id="occupation" required>
+        <option value="">Select</option>
+        <option>Desk Job</option>
+        <option>Manual Labor</option>
+        <option>Mixed</option>
+      </select>
+
+      <div class="buttons">
+        <button type="button" onclick="goBack()">← Back</button>
+        <button type="button" onclick="goNext()">Next →</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function goBack() { window.location.href = "profile-personal.html"; }
+    function goNext() {
+      localStorage.setItem("activity", document.getElementById("activity").value);
+      localStorage.setItem("occupation", document.getElementById("occupation").value);
+      window.location.href = "profile-diet.html";
+    }
+  </script>
+</body>
+</html>
